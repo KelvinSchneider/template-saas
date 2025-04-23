@@ -4,8 +4,6 @@ import Stripe from "stripe";
 export async function handleStripeSubscriptionCancel(event: Stripe.CustomerSubscriptionDeletedEvent) {
     console.log("Assinatura cancelada");
 
-    const metadata = event.data.object.metadata;
-
     const customerId = event.data.object.customer;
 
     const userRef = await db.collection("users").where("stripeCustomerId", "==", customerId).get();
