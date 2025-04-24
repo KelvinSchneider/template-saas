@@ -11,7 +11,8 @@ export async function POST(request: NextRequest) {
             body: {
                 external_reference: testeId, //isso impacta na pontuacao do MercadoPago
                 metadata: {
-                    testeId: testeId //Essa variavel é convertida para snake_case -> teste_id
+                    testeId: testeId, //Essa variavel é convertida para snake_case -> teste_id
+                    userEmail: userEmail,
                 },
                 ...(userEmail && {payer: {email: userEmail}}), //Também é importante para a pontuação do MercadoPago
                 items: [
